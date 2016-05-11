@@ -1,0 +1,34 @@
+{
+    "name": "buncha",
+    "version": "1.0.0",
+    "main": "index.js",
+    "description": "An IoC container supports Annotation Scanner, Automatically Detect Code Changes and Hot Reload. Inspired by Spring Framework",
+    "keywords": [
+        "reload",
+        "watch",
+        "annotation",
+        "dependency",
+        "injection",
+        "ioc"
+    ],
+    "homepage": "https://github.com/thoqbk/buncha",
+    "author": {
+        "name": "Tho Q Luong",
+        "email": "thoqbk@gmail.com"
+    },
+    "license": "MIT",
+    "scripts": {
+        "test": "mocha"
+    },
+    "contributors": [],
+    "dependencies": {
+        "bluebird": "^3.3.5",
+        "chokidar": "^1.4.3",
+        "underscore": "^1.8.3",
+        "walk": "^2.3.9"
+    },
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "chai-fuzzy": "^1.6.1"
+    }
+}
