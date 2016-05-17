@@ -35,20 +35,4 @@ describe("test annotation scanner", function () {
             })
             .catch(done);
     });
-
-    it("should detect all service", function (done) {
-        this.timeout(62000);
-        var container = new Container({debug: true});
-        container
-            .watch("test/annotation-samples")
-            .then(function () {
-                expect(container.resolve("userService")).is.not.equal(null);
-                setInterval(function () {
-                    done();
-                }, 60000);
-            })
-            .catch(done);
-
-
-    });
 });

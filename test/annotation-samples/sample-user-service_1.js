@@ -4,7 +4,7 @@
  * Tho Q Luong <thoqbk@gmail.com>
  *
  * Aug 06, 2015 21:43:22 PM
- * @Service(name="userService")
+ * @Service(name="userService222")
  */
 
 var Promise = require("bluebird");
