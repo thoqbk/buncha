@@ -1,12 +1,13 @@
-
 <p align="center">
   <a href="http://gulpjs.com">
-    <img height="257" src="https://raw.githubusercontent.com/thoqbk/buncha/master/docs/logo.png">
+    <img height="257" src="https://raw.githubusercontent.com/thoqbk/buncha/master/docs/logo.jpg">
   </a>
   <p align="center">IoC Container</p>
 </p>
 
-# What is buncha?
+
+
+## What is buncha?
 - **IoC Container** - Buncha is essential package to building a powerful, large application
 - **Invoke functions and construct object** - Buncha will find the correct arguements automatically to invoke your functions or construct an object from your class.
 - **Dependency manager** - Manage dependencies of services in container. Auto detect dependency cycle.
