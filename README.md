@@ -1,8 +1,6 @@
 <p align="center">
-  <a href="http://gulpjs.com">
-    <img height="257" src="https://raw.githubusercontent.com/thoqbk/buncha/master/docs/logo.jpg">
-  </a>
-  <p align="center">IoC Container</p>
+    <img height="257" src="https://raw.githubusercontent.com/thoqbk/buncha/master/docs/logo.jpg"/>
+    <p align="center">IoC Container</p>
 </p>
 
 
@@ -28,7 +26,7 @@ var ReportService = function (userService) {
     //...
 }
 //Register services. The registration order is NOT important
-var container = new require("buncha").Container();
+var container = new (require("buncha")).Container();
 container.registerByConstructor("reportService", ReportService);
 container.register("userService", userService);
 ```
@@ -63,15 +61,37 @@ function OrderService (userService, reportService) {
 ```
 Use `buncha` to scan all services in `service` directory
 ```
-var container = new require("buncha").Container();
+var container = new (require("buncha").Container)();
 var promise = container.scan( ["service"] );// .scan("service") is also OK.
 ```
-We also can use `.watch()` to scan and watch all changes of services to auto reload them:
+We can also use `.watch()` to scan and watch all changes of services to auto reload them:
 ```
-var container = new require("buncha").Container();
+var container = new (require("buncha").Container)();
 var promise = container.watch(["service"]);
 ```
 
+## Function utility
+```
+function hello(name, age){
+    //...
+}
+var User = function(name, age){
+    this.getName = function(){
+        return name;
+    }
+    this.getAge = function(){
+        return age;
+    }
+}
+var user = new User("Tom", 10);
+
+var Fx = require("buncha").Fx;
+var parameters = Fx.extractParameters( hello ); //return array of strings "name", "age"
+var methods = Fx.extractMethodNames( user ); //return array of strings "getName", "getAge"
+var annotations = Fx.extractAnnotations( fileContentInString ); //return all annotations
+
+```
+
+
 ## License
 MIT
-
