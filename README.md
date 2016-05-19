@@ -1,6 +1,6 @@
 <p align="center">
     <img height="257" src="https://raw.githubusercontent.com/thoqbk/buncha/master/docs/logo.jpg"/>
-    <p align="center">IoC Container</p>
+    <p align="center">IoC Container. Inspired by Spring Framework</p>
 </p>
 
 
