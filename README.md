@@ -59,6 +59,9 @@ function OrderService (userService, reportService) {
     //...
 }
 ```
+
+## Scan and watch
+
 Use `buncha` to scan all services in `service` directory
 ```
 var container = new (require("buncha").Container)();
@@ -92,6 +95,8 @@ var annotations = Fx.extractAnnotations( fileContentInString ); //return all ann
 
 ```
 
+## Author
+Tho Q Luong [thoqbk.github.io](http://thoqbk.github.io/)
 
 ## License
 MIT
