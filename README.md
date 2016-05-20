@@ -54,7 +54,7 @@ Create file `service/order-service.js` with annotation @Service in multi-line co
 /**
  * @Service(name="orderService")
  *
-**/
+ */
 module.exports = OrderService;
 function OrderService (userService, reportService) {
     //...
