@@ -17,7 +17,7 @@
 $ npm install --save buncha
 ```
 ## Register services manually
-```
+```js
 //Declare services
 var userService = function () {
     //...
@@ -31,7 +31,7 @@ container.registerByConstructor("reportService", ReportService);
 container.register("userService", userService);
 ```
 ## Invoke function and construct an object
-```
+```js
 function generateReport (userService, reportService) {
     //...
 }
@@ -50,7 +50,7 @@ var report2 = container.construct(Report, {type:"pdf"});
 
 ## Using service annotation to declare a service
 Create file `service/order-service.js` with annotation @Service in multi-line comment block
-```
+```js
 /**
  * @Service(name="orderService")
  *
@@ -64,7 +64,7 @@ function OrderService (userService, reportService) {
 ## Scan and watch
 
 Use `buncha` to scan all services in `service` directory
-```
+```js
 var container = new (require("buncha").Container)();
 var promise = container.scan( ["service"] );// .scan("service") is also OK.
 ```
@@ -75,7 +75,7 @@ var promise = container.watch(["service"]);
 ```
 
 ## Function utility
-```
+```js
 function hello(name, age){
     //...
 }
