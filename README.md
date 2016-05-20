@@ -29,6 +29,10 @@ var ReportService = function (userService) {
 var container = new (require("buncha").Container)();
 container.registerByConstructor("reportService", ReportService);
 container.register("userService", userService);
+
+//Get service by name
+var reportService = container.resolve("reportService");
+var services = container.resolve(["reportService", "userService"])
 ```
 ## Invoke function and construct an object
 ```js
@@ -73,6 +77,13 @@ We can also use `.watch()` to scan and watch all changes of services to auto rel
 var container = new (require("buncha").Container)();
 var promise = container.watch(["service"]);
 ```
+
+## Default services in IoC container:
+- $construct
+- $invoke
+- $register
+- $registerByConstructor
+- $resolve
 
 ## Function utility
 ```js
