@@ -29,9 +29,27 @@ describe("test annotation scanner", function () {
         container.scan(["test/annotation-samples"])
             .then(function () {
 
-                expect(container.resolve("SampleController")).to.not.equal(null);
-                expect(container.resolve("SampleController2")).to.not.equal(null);
-                expect(container.resolve("investment.PortfolioController")).to.not.equal(null);
+                var sampleController = container.resolve("SampleController");
+                var sampleController2 = container.resolve("SampleController2");
+                var portfolioController = container.resolve("investment.PortfolioController");
+
+                var userService222 = container.resolve("userService222");
+                var userService = container.resolve("userService");
+
+
+                expect(sampleController).to.not.equal(null);
+                expect(sampleController2).to.not.equal(null);
+                expect(portfolioController).to.not.equal(null);
+
+                var services = container.resolveByAnnotation("Service");
+                assert.include(services, userService222);
+                assert.include(services, userService);
+
+
+                var controllers = container.resolveByAnnotation("Controller");
+                assert.include(controllers, sampleController);
+                assert.include(controllers, sampleController2);
+                assert.include(controllers, portfolioController);
 
                 done();
             })

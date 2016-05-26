@@ -84,6 +84,7 @@ var promise = container.watch(["service"]);
 - $register
 - $registerByConstructor
 - $resolve
+- $resolveByAnnotation
 
 ## Function utility
 ```js
