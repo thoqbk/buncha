@@ -1,0 +1,20 @@
+/**
+ * Copyright (C) 2015, Cloudchat
+ *
+ * Tho Q Luong <thoqbk@gmail.com>
+ *
+ * May 25, 2015 21:43:22 PM
+ * 
+ * @Service(name="service1")
+ *
+ * v1
+ * Update service 1 with error
+ */
+
+module.exports = Service1;
+
+function Service1() {
+    this.hello = function() //ERROR, missing the open bracket
+        return "Hello Vietnam";
+    }
+};

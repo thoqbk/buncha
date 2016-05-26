@@ -76,10 +76,10 @@ describe("IoC container", function () {
             expect(service1.hello()).to.equal("service1.hello");
         };
 
-        var $build = container.resolve("$construct");
+        var $construct = container.resolve("$construct");
 
         try {
-            $build(Controller5);
+            $construct(Controller5);
         } catch (e) {
             assert.ok(false, "Build Container5 fail, message: " + e);
         }
@@ -93,7 +93,7 @@ describe("IoC container", function () {
                     return "service5.hello5";
                 }
             };
-            $build(Controller51, function (name) {
+            $construct(Controller51, function (name) {
                 if (name == "service5") {
                     return service5;
                 }
@@ -129,7 +129,7 @@ describe("IoC container", function () {
     //7. dependency graph
     it("should show correct dependency graph", function () {
         var containerDescription = container.toString()
-                .replace("Dependency graph:", "");
+            .replace("Dependency graph:", "");
         var dependencyGraph = JSON.parse(containerDescription);
 
         expect(dependencyGraph["service1"]).to.be.like([]);
@@ -139,6 +139,99 @@ describe("IoC container", function () {
 
 
         //console.log("Describe container: " + container.toString());
+    });
+
+    //8. invoke and construct
+    it("should invoke and construct correctly", function () {
+        var s1 = function () {
+            return "s1";
+        };
+        var s2 = function () {
+            return "s2";
+        };
+        var f = function (s1, s2) {
+            return s1() + " + " + s2();
+        };
+
+        var fWithThis = function (s1, s2) {
+            return s1() + " + " + s2() + this;
+        };
+
+        var c = function (s2, s1, s3) {
+            this.message = s1() + " + " + s2() + " + " + s3();
+        };
+
+        var container = new Container();
+        container.register("s1", s1);
+        container.register("s2", s2);
+
+
+        expect(container.invoke(f)).to.equal("s1 + s2");
+        expect(container.invoke(fWithThis, " + s3", null)).to.equal("s1 + s2 + s3");
+
+        expect(container.construct(c, {s3: function () {
+                return "s3";
+            }}).message).to.equal("s1 + s2 + s3");
+    });
+
+    //9. invalidate
+    it("invalidate", function () {
+
+        var container = new Container();
+
+        var Service1 = function () {
+            this.hello = function () {
+                return "this is service1";
+            };
+        };
+
+        var Service2 = function (service1) {
+            this.hello = function () {
+                return service1.hello() + " and service2";
+            };
+        };
+
+        var Service1V2 = function (service3) {
+            this.hello = function () {
+                return "this is service1V2" + " and " + service3();
+            };
+        };
+
+
+        var service3 = function () {
+            return "service3";
+        };
+
+        //1. register service2, service1
+        container.registerByConstructor("service2", Service2);
+        expect(container.resolve("service2")).to.equal(null);
+        container.registerByConstructor("service1", Service1);
+        expect(container.resolve("service2")).to.not.equal(null);
+        expect(container.resolve("service1")).to.not.equal(null);
+        expect(container.resolve("service2").hello()).to.equal("this is service1 and service2");
+
+        //2. unregister service 1 and expect service2 become invalidated
+        container.unregister("service1");
+        expect(container.resolve("service1")).to.equal(null);
+        expect(container.resolve("service2")).to.equal(null);
+
+        //3. register service2V2, service1 and check.
+        container.registerByConstructor("service1", Service1V2);
+        container.registerByConstructor("service2", Service2);
+        expect(container.resolve("service1")).to.equal(null);
+        expect(container.resolve("service2")).to.equal(null);
+
+        //4. register service3 and check
+        container.register("service3", service3);
+        expect(container.resolve("service1")).to.not.equal(null);
+        expect(container.resolve("service2")).to.not.equal(null);
+        expect(container.resolve("service3")).to.not.equal(null);
+        expect(container.resolve("service2").hello()).to.equal("this is service1V2 and service3 and service2");
+
+        //5. unregister service3 and check
+        container.unregister("service3");
+        expect(container.resolve("service1")).to.equal(null);
+        expect(container.resolve("service2")).to.equal(null);
     });
 });
 

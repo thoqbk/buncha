@@ -1,0 +1,19 @@
+/**
+ * Copyright (C) 2015, Cloudchat
+ *
+ * Tho Q Luong <thoqbk@gmail.com>
+ *
+ * May 25, 2015 21:43:22 PM
+ * 
+ * @Service(name="service1")
+ * v0
+ */
+
+module.exports = Service1;
+
+function Service1(){
+    
+};
+
+
+

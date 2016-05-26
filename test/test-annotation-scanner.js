@@ -16,7 +16,7 @@ chai.use(require('chai-fuzzy'));
 
 var Promise = require("bluebird");
 
-var AnnotationScanner = require("../lib/annotation-scanner.js");
+var Container = require("../lib/container.js");
 
 var Logger = require("../lib/logger.js");
 
@@ -24,13 +24,15 @@ var Container = require("../lib/container.js");
 
 describe("test annotation scanner", function () {
     it("should scan all controllers and services", function (done) {
-        var scanner = new AnnotationScanner(new Logger(true));
-        scanner.scan(["test/annotation-samples"])
+        var container = new Container({debug: true, scannedAnnotations: ["Service", "Controller"]});
+        container.register("$logger", {log: function () {}});
+        container.scan(["test/annotation-samples"])
             .then(function () {
-                var controllerFiles = scanner.getFilesByAnnotation("Controller");
-                expect(controllerFiles).to.include("test/annotation-samples/sample-controller.js");
-                expect(controllerFiles).to.include("test/annotation-samples/sample-controller2.js");
-                expect(controllerFiles).to.include("test/annotation-samples/investment/portfolio-controller.js");
+
+                expect(container.resolve("SampleController")).to.not.equal(null);
+                expect(container.resolve("SampleController2")).to.not.equal(null);
+                expect(container.resolve("investment.PortfolioController")).to.not.equal(null);
+
                 done();
             })
             .catch(done);

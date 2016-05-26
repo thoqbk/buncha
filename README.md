@@ -102,7 +102,7 @@ var user = new User("Tom", 10);
 
 var Fx = require("buncha").Fx;
 var parameters = Fx.extractParameters( hello ); //return ["name", "age"]
-var methods = Fx.extractMethodNames( user ); //return ["getName", "getAge"]
+var methods = Fx.getMethodNames( user ); //return ["getName", "getAge"]
 var annotations = Fx.extractAnnotations( fileContentInString ); //return all annotations
 
 ```
