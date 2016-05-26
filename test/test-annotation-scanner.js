@@ -16,6 +16,8 @@ chai.use(require('chai-fuzzy'));
 
 var Promise = require("bluebird");
 
+var _ = require("underscore")
+
 var Container = require("../lib/container.js");
 
 var Logger = require("../lib/logger.js");
@@ -42,14 +44,14 @@ describe("test annotation scanner", function () {
                 expect(portfolioController).to.not.equal(null);
 
                 var services = container.resolveByAnnotation("Service");
-                assert.include(services, userService222);
-                assert.include(services, userService);
+                assert.include(_(services).values(), userService222);
+                assert.include(_(services).values(), userService);
 
 
                 var controllers = container.resolveByAnnotation("Controller");
-                assert.include(controllers, sampleController);
-                assert.include(controllers, sampleController2);
-                assert.include(controllers, portfolioController);
+                assert.include(_(controllers).values(), sampleController);
+                assert.include(_(controllers).values(), sampleController2);
+                assert.include(_(controllers).values(), portfolioController);
 
                 done();
             })
