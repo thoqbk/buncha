@@ -40,7 +40,7 @@ describe("Benchmark", function () {
     it("Benchmark. Round 1: invoke", function () {
         this.timeout(60000);
         console.log("------------------------------");
-        console.log("Benchmark result of $invoke");
+        console.log("Benchmark result of $invoke:");
         var fx = function (service1) {
             var n1 = Math.floor(Math.random() * 1000000);
             var n2 = Math.floor(Math.random() * 1000000);

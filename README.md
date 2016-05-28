@@ -114,11 +114,12 @@ and `0.001195 ms` to `0.020473 ms` to construct an object.
 
 Following is the result of my test:
 ```
-Benchmark result of $invoke
+Benchmark result of $invoke:
 Wo Container: It takes 34ms to invoke 1000000 times.
 W/ Container, Wo Caching: It takes 9381ms to invoke 1000000 times. Average time spent by Buncha: 0.009347ms
 W/ Container, With Caching: It takes 1254ms to invoke 1000000 times. Average time spent by Buncha: 0.00122ms
 
+Benchmark result of $construct:
 Wo Container: It takes 38ms to construct 1000000 times.
 W/ Container, Wo Caching: It takes 20511ms to construct 1000000 times. Average time spent by Buncha: 0.020473ms
 W/ Container, With Caching: It takes 1233ms to construct 1000000 times. Average time spent by Buncha: 0.001195ms
