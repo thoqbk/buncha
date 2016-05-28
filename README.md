@@ -10,7 +10,7 @@
 - **Invoke Function and Construct Object** - Buncha will find the correct arguments automatically to invoke your functions or construct an object from your class.
 - **Dependency Manager** - Manage dependencies of services in container. Auto detect dependency cycle.
 - **Annotation Scanner** - Buncha uses @Service annotation to detect services in your projects.
-- **Watch File Changes and Auto Reload** - `You hate restarting your application anytime you modify a file?` Buncha detects changes and reload it and all dependents for you automatically.
+- **Watch File Changes and Auto Reload** - `You hate restarting your application to apply the changes every time you modify a file?` Buncha detects changes and reload it and all dependents for you automatically.
 - **Fast Execution** - Buncha usually spends less than `0.02 milliseconds` to parse and start invoking a function or constructing an object. See [benchmark test](#benchmark)
 
 ## Install
