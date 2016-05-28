@@ -6,12 +6,12 @@
 
 
 ## What is buncha?
-- **IoC Container** - Buncha is essential package to building a powerful, large application
-- **Invoke function and construct object** - Buncha will find the correct arguments automatically to invoke your functions or construct an object from your class.
-- **Dependency manager** - Manage dependencies of services in container. Auto detect dependency cycle.
-- **Annotation scanner** - Buncha uses @Service annotation to detect services in your projects.
+- **IoC Container** - Buncha is essential package to build a powerful, large application
+- **Invoke Function and Construct Object** - Buncha will find the correct arguments automatically to invoke your functions or construct an object from your class.
+- **Dependency Manager** - Manage dependencies of services in container. Auto detect dependency cycle.
+- **Annotation Scanner** - Buncha uses @Service annotation to detect services in your projects.
 - **Watch File Changes and Auto Reload** - `You hate restarting your application anytime you modify a file?` Buncha detects changes and reload it and all dependents for you automatically.
-
+- **Fast Execution** - Buncha usually spends less than 0.02 milliseconds to parse and start invoking a function or constructing an object. See [benchmark test](#benchmark)
 ## Install
 ```
 $ npm install --save buncha
@@ -34,7 +34,7 @@ container.register("userService", userService);
 var reportService = container.resolve("reportService");
 var services = container.resolve(["reportService", "userService"])
 ```
-## Invoke function and construct an object
+## Invoke function and construct object
 ```js
 function generateReport (userService, reportService) {
     //...
