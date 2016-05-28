@@ -125,6 +125,10 @@ W/ Container, Wo Caching: It takes 20511ms to construct 1000000 times. Average t
 W/ Container, With Caching: It takes 1233ms to construct 1000000 times. Average time spent by Buncha: 0.001195ms
 ```
 
+Run the benchmark test on your machine:
+```
+$ mocha --grep "Benchmark"
+```
 
 ## Author
 Tho Q Luong [thoqbk.github.io](http://thoqbk.github.io/)
