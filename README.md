@@ -110,7 +110,7 @@ var annotations = Fx.extractAnnotations( fileContentInString ); //return all ann
 ```
 
 ## Benchmark
-In my machine, Buncha usually spends only more `0.00122 ms` to `0.009347 ms` to parse and invoke a function 
+On my machine, Buncha usually spends only more `0.00122 ms` to `0.009347 ms` to parse and invoke a function 
 and `0.001195 ms` to `0.020473 ms` to construct an object.
 
 Following is the result of my test:
