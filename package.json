@@ -1,6 +1,6 @@
 {
     "name": "buncha",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "main": "index.js",
     "description": "An IoC container supports Annotation Scanner, Automatically Detect Code Changes and Hot Reload. Inspired by Spring Framework",
     "keywords": [
